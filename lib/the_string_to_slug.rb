@@ -7,6 +7,10 @@ class String
   def to_slug_param
     self.class.to_slug_param(self)
   end
+  
+  def to_soft_slug_param
+    self.class.to_soft_slug_param(self)
+  end
 
   def slugged_filename
     self.class.slugged_filename(self)
@@ -21,7 +25,11 @@ class String
   # -----------------------------------
   class << self
     def to_slug_param str
-      I18n::transliterate(str).gsub('_','-').parameterize('-')
+      I18n::transliterate(str).gsub('_','-').parameterize('-').downcase
+    end
+    
+    def to_soft_slug_param str
+      I18n::transliterate(str).parameterize('-')
     end
 
     def file_ext file_name

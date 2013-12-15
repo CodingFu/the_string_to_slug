@@ -21,7 +21,7 @@ class String
   # -----------------------------------
   class << self
     def to_slug_param str
-      I18n::transliterate(str).gsub('_','-').parameterize('-').downcase
+      I18n::transliterate(str).gsub('_','-').parameterize('-')
     end
 
     def file_ext file_name
